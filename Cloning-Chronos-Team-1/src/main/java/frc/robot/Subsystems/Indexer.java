@@ -5,6 +5,7 @@ import com.ctre.phoenix6.hardware.TalonFX;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
+
 public class Indexer extends SubsystemBase {
 
     //Instance
@@ -28,5 +29,36 @@ public class Indexer extends SubsystemBase {
     public Indexer () {
         LeadMotor = new TalonFX(Constants.HardwarePorts.indexerMotorLead);
         followMotor = new TalonFX(Constants.HardwarePorts.indexerMotorFollow);
+    }
+
+    //Motor states
+    public enum IndexerStates {
+        FAST(1.0),
+        SLOW(0.5),
+        OFF(0);
+
+        private double speed;
+
+        public double getSpeed() {
+            return speed;
+        }
+
+        IndexerStates(double speed) {
+            this.speed = speed;
+        }
+    }
+
+    //Methods
+    public void setSpeed(double voltage) {
+        LeadMotor.set(voltage);
+    }
+
+    public void setSpeed(IndexerStates state) {
+        LeadMotor.set(state.speed);
+        followMotor.setControl(follow);
+    }
+
+    public double getMotorVoltage() {
+        return LeadMotor.getMotorVoltage().getValueAsDouble();
     }
 }
