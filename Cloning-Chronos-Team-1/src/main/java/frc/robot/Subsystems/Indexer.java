@@ -33,9 +33,9 @@ public class Indexer extends SubsystemBase {
 
     //Motor states
     public enum IndexerStates {
-        FAST(1.0),
-        SLOW(0.5),
-        OFF(0);
+        UP(0.75),
+        OFF(0),
+        DOWN(-0.5);
 
         private double speed;
 
