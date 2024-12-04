@@ -11,7 +11,6 @@ import com.fasterxml.jackson.databind.node.DecimalNode;
 public class IndexerCMD extends Command {
     private final Indexer IndexerInstance = Indexer.getInstance();
     IndexerStates state;
-    Timer clock = new Timer();
     
 
     //Constructor
@@ -21,23 +20,22 @@ public class IndexerCMD extends Command {
 
 
     //initializes the command
+        
     @Override
     public void initialize() {
         IndexerInstance.setSpeed(state.getSpeed());
-        clock.schedule(null, 3000);
+        TimerClass.start();
     }
-
     //finished?
 
     @Override
     public boolean isFinished() {
-        
+        return true;
     }
 
     @Override
     public void end(boolean cool) {
 
     }
-
 
 }
