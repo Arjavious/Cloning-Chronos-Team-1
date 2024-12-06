@@ -14,8 +14,9 @@ public class IndexerCMD extends Command {
     
 
     //Constructor
-    public IndexerCMD () {
-        System.out.println("sup");
+    public IndexerCMD (IndexerStates states) {
+        this.state = states;
+        System.out.println("state acquired");
     }
 
 
@@ -26,16 +27,15 @@ public class IndexerCMD extends Command {
         IndexerInstance.setSpeed(state.getSpeed());
         TimerClass.start();
     }
-    //finished?
-
-    @Override
-    public boolean isFinished() {
-        return true;
-    }
 
     @Override
     public void end(boolean cool) {
-
+        try {
+            wait(2000);
+            IndexerInstance.setSpeed(0);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
 }
