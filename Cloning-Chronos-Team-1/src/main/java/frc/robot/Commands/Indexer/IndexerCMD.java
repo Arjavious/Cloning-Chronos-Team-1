@@ -24,7 +24,6 @@ public class IndexerCMD extends Command {
     @Override
     public void initialize() {
         IndexerInstance.setSpeed(state.getSpeed());
-        TimerClass.start();
     }
 
     @Override
