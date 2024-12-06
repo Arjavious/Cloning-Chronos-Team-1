@@ -50,7 +50,7 @@ public class Indexer extends SubsystemBase {
 
     //Methods
     public void setSpeed(double voltage) {
-        LeadMotor.set(voltage);
+      LeadMotor.set(voltage);
     }
 
     public void setSpeed(IndexerStates state) {

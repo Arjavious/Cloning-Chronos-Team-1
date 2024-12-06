@@ -47,6 +47,10 @@ public class Intake extends SubsystemBase{
             intakeMotor.set(state.motorSpeed);
         }
 
+        public void setMotorSpeed(double voltage) {
+            intakeMotor.set(voltage);
+        }
+
         public double getMotorVoltage () {
             return intakeMotor.getMotorVoltage().getValueAsDouble(); //we can use the voltage to see the state the motor is in
         }

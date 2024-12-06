@@ -11,7 +11,6 @@ import com.fasterxml.jackson.databind.node.DecimalNode;
 public class IndexerCMD extends Command {
     private final Indexer IndexerInstance = Indexer.getInstance();
     IndexerStates state;
-    
 
     //Constructor
     public IndexerCMD (IndexerStates states) {
@@ -29,13 +28,21 @@ public class IndexerCMD extends Command {
     }
 
     @Override
-    public void end(boolean cool) {
+    public boolean isFinished() {
         try {
-            wait(2000);
-            IndexerInstance.setSpeed(0);
+            wait(3000);
         } catch (InterruptedException e) {
             e.printStackTrace();
-        }
+        } 
+        return true;
     }
 
+    
+    @Override
+    public void end(boolean isFinished) {
+        isFinished = isFinished();
+        if (isFinished == true) {
+            IndexerInstance.setSpeed(0);
+    }
+    }
 }
