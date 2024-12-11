@@ -10,11 +10,13 @@ import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
 import frc.robot.Commands.Indexer.IndexerCMD;
 import frc.robot.Intake.IntakeCMD;
+import frc.robot.Shooter.ShooterCMD;
 import frc.robot.Subsystems.Indexer;
 import frc.robot.Subsystems.Intake;
 import frc.robot.Subsystems.Shooter;
 import frc.robot.Subsystems.Indexer.IndexerStates;
 import frc.robot.Subsystems.Intake.intakeStates;
+import frc.robot.Subsystems.Shooter.shootingStates;
 
 public class RobotContainer {
 
@@ -38,6 +40,7 @@ public class RobotContainer {
   private void configureBindings() {
     driver.a().onTrue(new IndexerCMD(IndexerStates.UP));
     driver.b().onTrue(new IntakeCMD(intakeStates.ON));
+    driver.x().onTrue(new ShooterCMD(shootingStates.P5));
   }
 
 public RobotContainer() {

@@ -20,7 +20,6 @@ public class IndexerCMD extends Command {
 
 
     //initializes the command
-        
     @Override
     public void initialize() {
         IndexerInstance.setSpeed(state.getSpeed());
